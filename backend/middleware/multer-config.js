@@ -1,9 +1,13 @@
+//importer le package 'multer'
 const multer = require('multer');
+
 const MIME_TYPES = {
     'image/jpeg':'jpg',
     'image/jpg':'jpg',
     'image/png':'png'
 }
+
+// configurer le storage de req.file 
 const storage = multer.diskStorage({
     destination:(req,file,callback) => {
         callback(null,'images')
@@ -16,5 +20,5 @@ const storage = multer.diskStorage({
 
     }
 });
-
+ // exporter la configuration du storage pour les fichiers envoyé par HTTP 
 module.exports = multer({storage}).single('image')
