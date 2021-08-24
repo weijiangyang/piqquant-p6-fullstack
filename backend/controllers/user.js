@@ -10,8 +10,9 @@ dotenv.config();
 
 // sign up d'un nouveau user
 exports.signup = (req, res, next) => {
+  // validation du mot de passe
   const passwordValidator = require('password-validator');
-  var schema = new passwordValidator();
+  const schema = new passwordValidator();
   schema
   .is().min(8)                                    // Minimum length 8
   .is().max(100)                                  // Maximum length 100
@@ -19,10 +20,10 @@ exports.signup = (req, res, next) => {
   .has().lowercase()                              // Must have lowercase letters
   .has().digits(2)                                // Must have at least 2 digits
   .has().not().spaces()                           // Should not have spaces
-  .is().not().oneOf(['Passw0rd', 'Password123']); 
-  console.log(schema.validate('123'));
+  .is().not().oneOf(['Passw0rd', 'Password123']);
+    
   if (!schema.validate(req.body.password)){
-    window.alert("password incorrect")
+    res.status(400).json({message:"choisir un mot de passe plus fort qui contient 8-100 caractères, des lettres majuscules et minuscules, au moins 2 chiffres et pas d'espace entre eux"})
   }else{
    // hasher le mot de passe
     bcrypt.hash(req.body.password, 10)
