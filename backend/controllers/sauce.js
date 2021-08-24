@@ -64,11 +64,11 @@ exports.deleteSauce = (req,res,next) =>{
 
 
 
-//Like a sauce
+//Like une sauce
 exports.likeSauce = (req, res, next) => {
   switch (req.body.like) {
     // Défault = 0
-    // Check that the user hasn't already liked the sauce
+    //  si l'utilisateur a déjâ like cette sauce
     case 0:
       Sauce.findOne({ _id: req.params.id })
         .then((sauce) => {
@@ -81,7 +81,7 @@ exports.likeSauce = (req, res, next) => {
               .then(() => { res.status(201).json({ message: 'Ton avis a été pris en compte!' }); })
               .catch((error) => { res.status(400).json({ error: error }); });
 
-            // check that the user hasn't already diliked the sauce
+            //  si l'utilisateur a déjâ dislike cette sauce
           } if (sauce.usersDisliked.find(user => user === req.body.userId)) {
             Sauce.updateOne({ _id: req.params.id }, {
               $inc: { dislikes: -1 },
