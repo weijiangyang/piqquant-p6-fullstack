@@ -1,5 +1,7 @@
+//importer le package 'mongoose'
 const mongoose = require('mongoose');
 
+//configurer le Schema pour la sauce
 const sauceSchema = mongoose.Schema({
     name:{type:String,required:true},
     manufacturer:{type:String,required:true},
@@ -15,4 +17,5 @@ const sauceSchema = mongoose.Schema({
     usersDisliked:{type:Array}
 })    
 
+// exporter le modèle de sauceSchema sous le nom 'Sauce'
 module.exports = mongoose.model('Sauce',sauceSchema);
