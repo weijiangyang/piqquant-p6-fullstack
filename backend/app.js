@@ -1,4 +1,5 @@
 //importer le framwork 'express'
+require('dotenv').config();
 const express = require('express');
 //importer le package 'mongoose' 
 const mongoose = require('mongoose');
@@ -14,12 +15,16 @@ const path = require('path');
 //importer le package 'helmet'
 const helmet = require('helmet');
 
+
 //connecter l'api avec la base de données MongoDB
-mongoose.connect('mongodb+srv://weijiangyang:Ywj32559438@cluster0.6pe6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+
+mongoose.connect('mongodb+srv://weijiangyang:${process.env.MONGO_PASS}@cluster0.6pe6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+
 
 //set HTTP headers avec 'helmet' pour la sécurité de site web
 app.use(helmet.hidePoweredBy());
@@ -50,3 +55,5 @@ app.use('/api/auth', userRoutes);
   
 
 module.exports = app;
+
+console.log(process.env.MONGO_PASS);
