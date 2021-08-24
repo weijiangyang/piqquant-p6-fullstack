@@ -5,6 +5,13 @@ const User = require('../models/User');
 // importer le package 'bycrypt'
 const bcrypt = require('bcrypt');
 
+function randomString(length, chars) {
+  var result = '';
+  for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+  return result;
+}
+var rString = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
 
 // sign up d'un nouveau user
 exports.signup = (req, res, next) => {
@@ -41,7 +48,7 @@ exports.signup = (req, res, next) => {
               // créer un token pour une session de login
               token: jwt.sign(
                 { userId: user._id },
-                'RANDOM_TOKEN_SECRET',
+                rString,
                 { expiresIn: '24h' }
               )
             });
