@@ -53,4 +53,4 @@ exports.signup = (req, res, next) => {
       .catch(error => res.status(500).json({ error }));
   };
 
-  console.log(process.env.RANDOM_TOKEN_SECRET);
+  
