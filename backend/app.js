@@ -1,8 +1,11 @@
 //importer le framwork 'express'
-require('dotenv').config();
+
+
 const express = require('express');
 //importer le package 'mongoose' 
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express();
 //importer le package 'body-parser'
 const bodyParser = require('body-parser');
@@ -18,7 +21,7 @@ const helmet = require('helmet');
 
 //connecter l'api avec la base de données MongoDB
 
-mongoose.connect('mongodb+srv://weijiangyang:${process.env.MONGO_PASS}@cluster0.6pe6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.URL_MONGO,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -56,4 +59,3 @@ app.use('/api/auth', userRoutes);
 
 module.exports = app;
 
-console.log(process.env.MONGO_PASS);
