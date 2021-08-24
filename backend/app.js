@@ -40,7 +40,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    res.setHeader("Set-Cookie", "cookiename=value; Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly"); 
+    res.setHeader("Set-Cookie", "cookiename=value; Path=/;Domain=.fontawesome.com;Max-Age=seconds;HTTPOnly"); 
+    res.setHeader("Set-Cookie", "_ga=GA1.2.445294470.1623071001; Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly"); 
     next();
   });
 
