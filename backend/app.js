@@ -19,6 +19,7 @@ const path = require('path');
 const helmet = require('helmet');
 
 
+const cookieSession = require('cookie-session')
 //connecter l'api avec la base de données MongoDB
 
 mongoose.connect(process.env.URL_MONGO,
@@ -41,9 +42,16 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.setHeader("Set-Cookie", "cookiename=value; Path=/;Domain=.fontawesome.com;Max-Age=seconds;HTTPOnly"); 
-    res.setHeader("Set-Cookie", "userId=`${req.body.userID`}; Path=/;Domain=localhost;Max-Age=seconds;HTTPOnly"); 
+    // res.setHeader("Set-Cookie", "userId=`${req.body.userID`}; Path=/;Domain=localhost;Max-Age=seconds;HTTPOnly"); 
     next();
   });
+app.use(cookieSession({
+  name: 'session',
+  keys: [0],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 //pour transformer le body du request en JSON 
 app.use(bodyParser.json());
