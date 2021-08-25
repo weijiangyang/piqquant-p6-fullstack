@@ -26,7 +26,7 @@ exports.signup = (req, res, next) => {
   if (!schema.validate(req.body.password)){
     res.status(400).json({message:"choisir un mot de passe plus fort qui contient 8-100 caractères, des lettres majuscules et minuscules, au moins 2 chiffres et pas d'espace entre eux"})
   }else{
-    const cipherEmail= CryptoJS.AES.encrypt(req.body.email, '123').toString();
+    const cipherEmail= CryptoJS.HmacSHA1(req.body.email, process.env.SECRET_KEY).toString();
    // hasher le mot de passe
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
@@ -45,8 +45,9 @@ exports.signup = (req, res, next) => {
     };
 // login d'un user existant
   exports.login = (req, res, next) => {
+    const cipherEmail= CryptoJS.HmacSHA1(req.body.email, process.env.SECRET_KEY).toString();
     
-    User.findOne({ email: req.body.email})
+    User.findOne({ email: cipherEmail})
       .then(user => {
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
