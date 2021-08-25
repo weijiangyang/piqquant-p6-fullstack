@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 // importer le fichier controller pour l'user
 const userCtrl = require('../controllers/user');
+// limiter le numbre des requêtes pour eviter l'attaque force brute
 const rateLimit = require("express-rate-limit");
 const createAccountLimiter = rateLimit({
     windowMs: 2 * 60 * 1000, // 1 hour window
