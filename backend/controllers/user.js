@@ -45,7 +45,7 @@ exports.signup = (req, res, next) => {
     };
 // login d'un user existant
   exports.login = (req, res, next) => {
-    //récupérer l'email crypté
+//récupérer l'email crypté[]
     const cipherEmail= CryptoJS.HmacSHA1(req.body.email, process.env.SECRET_KEY).toString();
     
     User.findOne({ email: cipherEmail})
