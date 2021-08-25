@@ -6,6 +6,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const dotenv = require("dotenv");
 dotenv.config();
+const CryptoJS = require("crypto-js");
 
 
 // sign up d'un nouveau user
@@ -25,12 +26,13 @@ exports.signup = (req, res, next) => {
   if (!schema.validate(req.body.password)){
     res.status(400).json({message:"choisir un mot de passe plus fort qui contient 8-100 caractères, des lettres majuscules et minuscules, au moins 2 chiffres et pas d'espace entre eux"})
   }else{
+    const cipherEmail= CryptoJS.AES.encrypt(req.body.email, '123').toString();
    // hasher le mot de passe
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
         //créer une instance de User avec le email entré et le password hashé
         const user = new User({
-          email: req.body.email,
+          email: cipherEmail,
           password: hash
         });
         // engirstrer le nouveau user dans la base de donnée
@@ -43,7 +45,8 @@ exports.signup = (req, res, next) => {
     };
 // login d'un user existant
   exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
+    
+    User.findOne({ email: req.body.email})
       .then(user => {
         if (!user) {
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
