@@ -18,17 +18,14 @@ const path = require('path');
 //importer le package 'helmet'
 const helmet = require('helmet');
 
-
+//importer le package 'cookie-session' pour protéger le cookie de session
 const cookieSession = require('cookie-session')
 //connecter l'api avec la base de données MongoDB
-
 mongoose.connect(process.env.URL_MONGO,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
-
-
 
 //set HTTP headers avec 'helmet' pour la sécurité de site web
 app.use(helmet.hidePoweredBy());
@@ -42,9 +39,10 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.setHeader("Set-Cookie", "cookiename=value; Path=/;Domain=.fontawesome.com;Max-Age=seconds;HTTPOnly"); 
-    // res.setHeader("Set-Cookie", "userId=`${req.body.userID`}; Path=/;Domain=localhost;Max-Age=seconds;HTTPOnly"); 
+    
     next();
   });
+  
 app.use(cookieSession({
   name: 'session',
   keys: [0],
