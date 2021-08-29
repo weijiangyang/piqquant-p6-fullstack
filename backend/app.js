@@ -18,28 +18,20 @@ const path = require('path');
 //importer le package 'helmet'
 const helmet = require('helmet');
 
+const session = require("express-session");
+
 //importer le package 'cookie-session' pour protéger le cookie de session
 const cookieSession = require('cookie-session')
 //connecter l'api avec la base de données MongoDB
-<<<<<<< HEAD
+
+
 mongoose.connect(process.env.URL_MONGO,
-=======
-// mongoose.connect(process.env.URL_MONGO,
-//   { useNewUrlParser: true,
-//     useUnifiedTopology: true })
-//   .then(() => console.log('Connexion à MongoDB réussie !'))
-//   .catch(() => console.log('Connexion à MongoDB échouée !'));
-mongoose.connect('mongodb+srv://weijiangyang:Ywj32559438@cluster0.6pe6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
->>>>>>> 8e79fda07aab5ef43234299807d7d41e4743acf5
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
-// mongoose.connect('mongodb+srv://weijiangyang:Ywj32559438@cluster0.6pe6i.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-//   { useNewUrlParser: true,
-//     useUnifiedTopology: true })
-//   .then(() => console.log('Connexion à MongoDB réussie !'))
-//   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+
 
 //set HTTP headers avec 'helmet' pour la sécurité de site web
 app.use(helmet.hidePoweredBy());
