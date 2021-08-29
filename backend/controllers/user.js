@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const dotenv = require("dotenv");
 dotenv.config();
 const CryptoJS = require("crypto-js");
+const session = require('express-session');
 
 
 // sign up d'un nouveau user
@@ -45,6 +46,8 @@ exports.signup = (req, res, next) => {
     };
 // login d'un user existant
   exports.login = (req, res, next) => {
+    // req.session.userInfo = "zhansan111";
+    // res.send("login success")
 //récupérer l'email crypté[]
     const cipherEmail= CryptoJS.HmacSHA1(req.body.email, process.env.SECRET_KEY).toString();
     
