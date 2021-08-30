@@ -56,31 +56,6 @@ app.use((req, res, next) => {
 //   // Cookie Options
 //   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 // }));
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  rolling:true,
-  saveUninitialized: true,
-  // cookie: { secure: true }
-}));
-
-
-app.use("/login",(req,res) => {
-  req.session.userInfo = "zhaosan111";
-  res.send("login success!");
-});  
-app.get("/sauces",(req,res,next) => {
-  if(req.session.userInfo){
-    res.send(req.session.userInfo);
-   
-  }else{"no way"};
-  next();
-})
-
-
-
-
-
 
 //pour transformer le body du request en JSON 
 app.use(bodyParser.json());
