@@ -62,6 +62,7 @@ exports.signup = (req, res, next) => {
             if (!valid) {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
+            req.session.userInfo = "zhansan111";
             res.status(200).json({
               userId: user._id,
               // créer un token pour une session de login
@@ -69,7 +70,8 @@ exports.signup = (req, res, next) => {
                 { userId: user._id },
                 process.env.RANDOM_TOKEN_SECRET,
                 { expiresIn: '24h' }
-              )
+              ),
+              message:"login sucess!"
             });
           })
           .catch(error => res.status(500).json({ error }));

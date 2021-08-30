@@ -7,6 +7,7 @@ const sauceCtrl = require('../controllers/sauce');
 const auth = require('../middleware/auth');
 // importer le fichier middleware pour le multer 
 const multer = require('../middleware/multer-config');
+const session = require("../middleware/session");
 
 // les routes pour chaque fonctionnement
 router.post('/',auth,multer, sauceCtrl.createSauce );

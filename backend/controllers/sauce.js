@@ -23,6 +23,7 @@ exports.createSauce = (req, res, next) => {
     };
 // lire tous les sauces
 exports.getAllSauces = (req,res,next) => {
+  
     Sauce.find()
     .then(sauces => res.status(200).json(sauces))
     .catch(error => res.status(404).json({error}));
