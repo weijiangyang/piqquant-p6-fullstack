@@ -62,17 +62,19 @@ app.use(session({
   saveUninitialized: true,
   // cookie: { secure: true }
 }));
-app.use("/",(req,res) => {
-  if(req.session.userInfo){
-    res.send("ok")
-  }else{"no way"}
-})
+
 
 app.use("/login",(req,res) => {
   req.session.userInfo = "zhaosan111";
   res.send("login success!");
 });  
-
+app.get("/",(req,res,next) => {
+  if(req.session.userInfo){
+    res.send(req.session.userInfo);
+   
+  }else{"no way"};
+  next();
+})
 
 
 
