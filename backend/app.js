@@ -59,6 +59,7 @@ app.use((req, res, next) => {
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
+  rolling:true,
   saveUninitialized: true,
   // cookie: { secure: true }
 }));
@@ -68,7 +69,7 @@ app.use("/login",(req,res) => {
   req.session.userInfo = "zhaosan111";
   res.send("login success!");
 });  
-app.get("/",(req,res,next) => {
+app.get("/sauces",(req,res,next) => {
   if(req.session.userInfo){
     res.send(req.session.userInfo);
    
