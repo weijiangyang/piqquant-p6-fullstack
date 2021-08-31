@@ -22,20 +22,33 @@ exports.createSauce = (req, res, next) => {
     });
     // enregistrer le nouveau objet dans la base de données et renvoyer la reponse sur le status de la réponse et des messages de reusis ou échec  
     sauce.save()
-      // .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
       .then(function(){
         res.status(201).json({ message: 'Objet enregistré !'});
         logger.log('info','Objet enregistré !')
       })
-      .catch(error => res.status(400).json({ error }));
-    };
+      .catch(function(error){
+        res.status(400).json({ error });
+        logger.log('info','error')
+        })
+};
+
+      
+      
+    
 // lire tous les sauces
 exports.getAllSauces = (req,res,next) => {
   
     Sauce.find()
-    .then(sauces => res.status(200).json(sauces))
-    .catch(error => res.status(404).json({error}));
-};
+    // .then(sauces => res.status(200).json(sauces))
+    .then(function(sauces){
+      res.status(200).json(sauces);
+      logger.log('info','reussir a lire tous')
+    })
+    .catch(function(error){
+      res.status(404).json({error});
+      logger.log('info','ok')
+    })
+};  
 
 // lire une sauce spécifique
 exports.getOneSauce = (req,res,next) => {
@@ -54,8 +67,16 @@ exports.modifySauce = (req, res, next) => {
         } : { ...req.body};
         Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
         .then(() => res.status(200).json({ message: 'Objet modifié !'}))
-        .catch(error => res.status(400).json({ error }));
-        }
+        .then(function(sauce){
+          res.status(200).json({ message: 'Objet modifié !'});
+          logger.log('info','Ok!')
+        })
+      
+        .catch(function(error){
+          res.status(400).json({ error });
+          logger.log('info','ok')
+        });
+}        
 // supprimer une sauce   
 exports.deleteSauce = (req,res,next) =>{
     Sauce.findOne({_id:req.params.id})
