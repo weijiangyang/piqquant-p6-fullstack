@@ -15,3 +15,9 @@
 {"level":"info","message":"un utilisateur créé !","timestamp":"2021-08-31T20:06:33.210Z"}
 {"level":"info","message":"un utilisateur créé !","timestamp":"2021-08-31T20:08:07.033Z"}
 {"errors":{"email":{"name":"ValidatorError","message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","properties":{"message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","type":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"},"kind":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"}},"_message":"User validation failed","level":"info","timestamp":"2021-08-31T20:09:14.698Z"}
+{"level":"info","message":"Utilisateur non trouvé !","timestamp":"2021-08-31T20:14:34.844Z"}
+{"level":"info","message":"Mot de passe incorrect !","timestamp":"2021-08-31T20:16:34.186Z"}
+{"level":"info","message":"Mot de passe incorrect !","timestamp":"2021-08-31T20:19:41.627Z"}
+{"level":"info","message":"Utilisateur non trouvé !","timestamp":"2021-08-31T20:19:52.624Z"}
+{"level":"info","message":"le mot de passe est très faible","timestamp":"2021-08-31T20:20:21.260Z"}
+{"level":"info","message":"un utilisateur créé !","timestamp":"2021-08-31T20:20:34.955Z"}

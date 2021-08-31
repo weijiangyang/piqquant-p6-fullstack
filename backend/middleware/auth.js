@@ -1,6 +1,7 @@
 //importer le package 'jsonwebtoken'
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv");
+const logger = require('../configue/logger');
 dotenv.config();
 // authentifier le token de la requête
 module.exports = (req, res, next) => {
@@ -10,7 +11,8 @@ module.exports = (req, res, next) => {
     const userId = decodedToken.userId;
     if (req.body.userId && req.body.userId !== userId) {
     //   throw 'Invalid user ID';
-        res.status(403).json({message:"request non authorisé"})
+        res.status(403).json({message:"request non authorisé"});
+        logger.log('info','request non authorisé')
     } else {
       next();
     }
@@ -18,5 +20,6 @@ module.exports = (req, res, next) => {
     res.status(401).json({
       error: new Error('Invalid request!')
     });
+    logger.log('info','Invalid request!')
   }
 };

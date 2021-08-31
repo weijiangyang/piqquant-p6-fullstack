@@ -4,7 +4,7 @@
   "description": "API sauce piquante",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "yangweijiang",
   "license": "ISC",

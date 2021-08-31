@@ -52,9 +52,13 @@ exports.signup = (req, res, next) => {
           })
           
       })
-      .catch(error => res.status(500).json({ error }));
-      };
-    };
+      .catch(function(error){
+        res.status(500).json({ error });
+        logger.log('info',error)
+      });
+  };
+      
+};
 // login d'un user existant
   exports.login = (req, res, next) => {
     // req.session.userInfo = "zhansan111";
@@ -65,12 +69,15 @@ exports.signup = (req, res, next) => {
     User.findOne({ email: cipherEmail})
       .then(user => {
         if (!user) {
+          logger.log('info','Utilisateur non trouvé !')
           return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+          
         }
         //comparer le mot de passe hashé stocké dans la base de donnée et celui dans la requête
         bcrypt.compare(req.body.password, user.password)
           .then(valid => {
             if (!valid) {
+              logger.log('info','Mot de passe incorrect !');
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
            
@@ -85,9 +92,17 @@ exports.signup = (req, res, next) => {
               message:"login sucess!"
             });
           })
-          .catch(error => res.status(500).json({ error }));
+          
+          .catch(function(error){
+            res.status(500).json({ error });
+            logger.log('info',error)
+          })
       })
-      .catch(error => res.status(500).json({ error }));
+      .catch(function(){
+        res.status(500).json({ error });
+        logger.log('info',error)
+      });
+      
   };
 
   
