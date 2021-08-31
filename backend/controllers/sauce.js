@@ -5,6 +5,8 @@ const Sauce = require('../models/sauce');
 const fs = require("fs");
 
 
+
+
 // créer une nouvelle sauce
 exports.createSauce = (req, res, next) => {
     //créer une instance de Sauce 
@@ -19,6 +21,10 @@ exports.createSauce = (req, res, next) => {
     // enregistrer le nouveau objet dans la base de données et renvoyer la reponse sur le status de la réponse et des messages de reusis ou échec  
     sauce.save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+      // .then(function(){
+      //   res.status(201).json({ message: 'Objet enregistré !'});
+      //   logger.log('info','Objet enregistré !')
+      // })
       .catch(error => res.status(400).json({ error }));
     };
 // lire tous les sauces

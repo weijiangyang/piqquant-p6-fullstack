@@ -1,8 +1,12 @@
-//importer le protocol 'http' et le fichier 'app.js'
 const http = require('http');
+const { path } = require('./app');
 const app = require('./app');
 
-//renvoie un port valide qui est sous sous form d'un numéro ou une chaine
+
+
+
+
+
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -17,7 +21,6 @@ const normalizePort = val => {
 const port = normalizePort(process.env.PORT || 3000);
 app.set('port', port);
 
-//recherche des différents errors et les gère 
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -37,10 +40,12 @@ const errorHandler = error => {
       throw error;
   }
 };
-//utiliser le module app pour la création  du serveur
+
 const server = http.createServer(app);
 
-//l'ecouteur d'événements et le port sur lequel le serveur s'execute dans le console
+
+
+
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();
@@ -48,5 +53,5 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port);
 
+server.listen(port);

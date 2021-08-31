@@ -33,7 +33,8 @@ exports.signup = (req, res, next) => {
       .then(hash => {
         //créer une instance de User avec le email entré et le password hashé
         const user = new User({
-          email: cipherEmail,
+          email:cipherEmail,
+          // email: cipherEmail,
           password: hash
         });
         // engirstrer le nouveau user dans la base de donnée
@@ -62,7 +63,7 @@ exports.signup = (req, res, next) => {
             if (!valid) {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
-            req.session.userInfo = "zhansan111";
+           
             res.status(200).json({
               userId: user._id,
               // créer un token pour une session de login
