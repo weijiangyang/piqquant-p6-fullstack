@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const dotenv = require("dotenv");
 dotenv.config();
 const CryptoJS = require("crypto-js");
-const session = require('express-session');
+
 
 
 // sign up d'un nouveau user

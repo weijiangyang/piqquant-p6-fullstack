@@ -4,6 +4,8 @@ const Sauce = require('../models/sauce');
 // importer le package 'fs' 
 const fs = require("fs");
 
+const logger = require("../configue/logger")
+
 
 
 
@@ -20,11 +22,11 @@ exports.createSauce = (req, res, next) => {
     });
     // enregistrer le nouveau objet dans la base de données et renvoyer la reponse sur le status de la réponse et des messages de reusis ou échec  
     sauce.save()
-      .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-      // .then(function(){
-      //   res.status(201).json({ message: 'Objet enregistré !'});
-      //   logger.log('info','Objet enregistré !')
-      // })
+      // .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+      .then(function(){
+        res.status(201).json({ message: 'Objet enregistré !'});
+        logger.log('info','Objet enregistré !')
+      })
       .catch(error => res.status(400).json({ error }));
     };
 // lire tous les sauces
