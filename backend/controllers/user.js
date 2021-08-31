@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const dotenv = require("dotenv");
 dotenv.config();
 const CryptoJS = require("crypto-js");
+const logger = require('../configue/logger');
 
 
 
@@ -25,6 +26,7 @@ exports.signup = (req, res, next) => {
   .is().not().oneOf(['Passw0rd', 'Password123']);
     
   if (!schema.validate(req.body.password)){
+    logger.log('info','le mot de passe est très faible')
     res.status(400).json({message:"choisir un mot de passe plus fort qui contient 8-100 caractères, des lettres majuscules et minuscules, au moins 2 chiffres et pas d'espace entre eux"})
   }else{//crypter l'email stocké dans le BDD
     const cipherEmail= CryptoJS.HmacSHA1(req.body.email, process.env.SECRET_KEY).toString();
@@ -39,8 +41,16 @@ exports.signup = (req, res, next) => {
         });
         // engirstrer le nouveau user dans la base de donnée
         user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
+          
+          .then(function(){
+            res.status(201).json({ message: 'Utilisateur créé !' });
+            logger.log('info','un utilisateur créé !')
+          })
+          .catch(function(error){
+            res.status(400).json({ error });
+            logger.log('info',error)
+          })
+          
       })
       .catch(error => res.status(500).json({ error }));
       };

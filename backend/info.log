@@ -1,3 +1,17 @@
 {"level":"info","message":"Objet enregistré !","timestamp":"2021-08-31T19:10:06.754Z"}
 {"level":"info","message":"Objet enregistré !","timestamp":"2021-08-31T19:37:42.961Z"}
 {"level":"info","message":"reussir a lire tous","timestamp":"2021-08-31T19:40:32.680Z"}
+{"level":"info","message":"Ok!","timestamp":"2021-08-31T19:42:28.990Z"}
+{"level":"info","message":"Objet modifié !","timestamp":"2021-08-31T19:43:33.097Z"}
+{"level":"info","message":"Objet supprime!","timestamp":"2021-08-31T19:47:26.285Z"}
+{"level":"info","message":"Objet enregistré !","timestamp":"2021-08-31T19:47:50.359Z"}
+{"level":"info","message":"Objet supprime!","timestamp":"2021-08-31T19:51:19.891Z"}
+{"level":"info","message":"Objet enregistré !","timestamp":"2021-08-31T19:58:42.546Z"}
+{"level":"info","message":"Objet modifié !","timestamp":"2021-08-31T19:59:07.271Z"}
+{"level":"info","message":"Objet supprime!","timestamp":"2021-08-31T19:59:18.436Z"}
+{"level":"info","message":"Objet enregistré !","timestamp":"2021-08-31T19:59:35.764Z"}
+{"level":"info","message":"Objet supprime!","timestamp":"2021-08-31T20:00:05.323Z"}
+{"level":"info","message":"le mot de passe est très faible","timestamp":"2021-08-31T20:03:35.089Z"}
+{"level":"info","message":"un utilisateur créé !","timestamp":"2021-08-31T20:06:33.210Z"}
+{"level":"info","message":"un utilisateur créé !","timestamp":"2021-08-31T20:08:07.033Z"}
+{"errors":{"email":{"name":"ValidatorError","message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","properties":{"message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","type":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"},"kind":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"}},"_message":"User validation failed","level":"info","timestamp":"2021-08-31T20:09:14.698Z"}
