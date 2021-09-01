@@ -3,10 +3,8 @@ const Sauce = require('../models/sauce');
 
 // importer le package 'fs' 
 const fs = require("fs");
-
+// importer winston logger
 const logger = require("../configue/logger")
-
-
 
 
 // créer une nouvelle sauce
@@ -32,7 +30,6 @@ exports.createSauce = (req, res, next) => {
         })
 };
 
-      
       
     
 // lire tous les sauces
