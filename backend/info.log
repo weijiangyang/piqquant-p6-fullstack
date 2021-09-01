@@ -35,3 +35,8 @@
 {"level":"info","message":"Utilisateur non trouvé !","timestamp":"2021-08-31T21:02:27.276Z"}
 {"level":"info","message":"le mot de passe est très faible","timestamp":"2021-08-31T21:02:51.914Z"}
 {"level":"info","message":"Objet modifié !","timestamp":"2021-09-01T07:08:30.970Z"}
+{"level":"info","message":"Mot de passe incorrect !","timestamp":"2021-09-01T07:42:33.706Z"}
+{"level":"info","message":"Mot de passe incorrect !","timestamp":"2021-09-01T07:42:44.653Z"}
+{"level":"info","message":"Objet enregistré !","timestamp":"2021-09-01T07:43:53.748Z"}
+{"level":"info","message":"Objet modifié !","timestamp":"2021-09-01T07:44:18.414Z"}
+{"level":"info","message":"Objet supprime!","timestamp":"2021-09-01T07:44:23.927Z"}
