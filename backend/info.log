@@ -40,3 +40,4 @@
 {"level":"info","message":"Objet enregistré !","timestamp":"2021-09-01T07:43:53.748Z"}
 {"level":"info","message":"Objet modifié !","timestamp":"2021-09-01T07:44:18.414Z"}
 {"level":"info","message":"Objet supprime!","timestamp":"2021-09-01T07:44:23.927Z"}
+{"errors":{"email":{"name":"ValidatorError","message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","properties":{"message":"Error, expected `email` to be unique. Value: `3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646`","type":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"},"kind":"unique","path":"email","value":"3ff83ce88b9bbd7b5d9b033c20ab4bcffded1646"}},"_message":"User validation failed","level":"info","timestamp":"2021-09-01T09:46:14.040Z"}
